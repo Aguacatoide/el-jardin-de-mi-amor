@@ -1,0 +1,2159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Krismar 🌸</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌼</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --azul-noche: #1a1a2e;
+            --azul-profundo: #16213e;
+            --azul-acento: #0f3460;
+            --bronce: #c9a227;
+            --bronce-claro: #e8d5a3;
+            --bronce-oscuro: #c4a457;
+            --rosa-pastel: #f8b4c4;
+            --blanco-crema: #fff8e7;
+            --verde-menta: #a8e6cf;
+            --verde-sauge: #88d8b0;
+            --oro-estelar: #ffd700;
+            --lavanda: #e6e6fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'EB Garamond', Georgia, serif;
+            background: linear-gradient(180deg, #0d0d1a 0%, var(--azul-noche) 30%, var(--azul-profundo) 70%, #0a0f1a 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: var(--blanco-crema);
+        }
+
+        .font-cinzel { font-family: 'Cinzel Decorative', serif; }
+        .font-cormorant { font-family: 'Cormorant Garamond', serif; }
+        .font-garamond { font-family: 'EB Garamond', serif; }
+
+        /* ========== STARS BACKGROUND ========== */
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            animation: star-twinkle var(--duration) ease-in-out infinite;
+            animation-delay: var(--delay);
+        }
+
+        .star-4point {
+            clip-path: polygon(50% 0%, 65% 35%, 100% 50%, 65% 65%, 50% 100%, 35% 65%, 0% 50%, 35% 35%);
+        }
+
+        .star-6point {
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        }
+
+        .sparkle {
+            border-radius: 50%;
+            box-shadow: 0 0 6px currentColor, 0 0 12px currentColor;
+        }
+
+        @keyframes star-twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(0.8) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1.2) rotate(180deg); }
+        }
+
+        /* ========== FLOATING CANDLES ========== */
+        .candle-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .candle {
+            position: absolute;
+            width: 4px;
+            height: 20px;
+            background: linear-gradient(to top, #f5e6c8, #fff8e7);
+            border-radius: 2px;
+            animation: candle-rise var(--rise-duration) ease-out infinite;
+            animation-delay: var(--delay);
+        }
+
+        .candle::before {
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 12px;
+            background: radial-gradient(ellipse at bottom, #ffd700 0%, #ff8c00 40%, transparent 70%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: flame-flicker 0.3s ease-in-out infinite alternate;
+        }
+
+        .candle::after {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 30px;
+            background: radial-gradient(circle, rgba(255, 200, 100, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        @keyframes candle-rise {
+            0% {
+                transform: translateY(110vh) translateX(0);
+                opacity: 0;
+            }
+            10% { opacity: 0.9; }
+            90% { opacity: 0.7; }
+            100% {
+                transform: translateY(-100px) translateX(var(--drift));
+                opacity: 0;
+            }
+        }
+
+        @keyframes flame-flicker {
+            0% { transform: translateX(-50%) scaleY(1) scaleX(1); }
+            100% { transform: translateX(-50%) scaleY(1.1) scaleX(0.9); }
+        }
+
+        /* ========== FLOATING EAGLES ========== */
+        .eagle-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .floating-eagle {
+            position: absolute;
+            opacity: 0.15;
+            animation: eagle-fly var(--fly-duration) linear infinite;
+            animation-delay: var(--delay);
+        }
+
+        @keyframes eagle-fly {
+            0% {
+                transform: translateX(-100px) translateY(0) scale(var(--scale)) rotate(var(--start-rot));
+            }
+            50% {
+                transform: translateX(50vw) translateY(var(--float-y)) scale(var(--scale)) rotate(0deg);
+            }
+            100% {
+                transform: translateX(calc(100vw + 100px)) translateY(0) scale(var(--scale)) rotate(var(--end-rot));
+            }
+        }
+
+        /* ========== MIST EFFECT ========== */
+        .mist {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(to top, rgba(22, 33, 62, 0.6) 0%, transparent 100%);
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        /* ========== GARDEN CONTAINER ========== */
+        .garden-container {
+            position: relative;
+            min-height: 100vh;
+            padding: 100px 20px 60px;
+            z-index: 10;
+        }
+
+        /* ========== HEADER WITH RAVENCLAW SHIELD ========== */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            animation: fade-in-down 1s ease-out;
+        }
+
+        .header-shield {
+            width: 70px;
+            height: 80px;
+            background: rgba(201, 169, 89, 0.15);
+            border-radius: 8px 8px 35px 35px;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid #c9a959;
+            box-shadow: 0 4px 20px rgba(201, 169, 89, 0.3);
+            animation: shield-glow 3s ease-in-out infinite;
+        }
+
+        .header-shield .eagle {
+            font-size: 36px;
+            animation: eagle-bob 2s ease-in-out infinite;
+        }
+
+        @keyframes shield-glow {
+            0%, 100% { box-shadow: 0 4px 20px rgba(201, 169, 89, 0.3); }
+            50% { box-shadow: 0 4px 30px rgba(201, 169, 89, 0.6); }
+        }
+
+        @keyframes eagle-bob {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+
+        .header h1 {
+            font-size: clamp(1.6rem, 5vw, 3rem);
+            color: var(--bronce-claro);
+            text-shadow: 0 0 20px rgba(196, 164, 87, 0.4), 0 2px 4px rgba(0,0,0,0.5);
+            letter-spacing: 0.1em;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            color: var(--lavanda);
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        @keyframes fade-in-down {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ========== COUNTER BADGE ========== */
+        .counter-badge {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(10, 15, 26, 0.9);
+            border: 2px solid var(--bronce-oscuro);
+            border-radius: 50px;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(196, 164, 87, 0.3), inset 0 0 20px rgba(196, 164, 87, 0.1);
+        }
+
+        .counter-badge svg {
+            width: 28px;
+            height: 28px;
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        .counter-badge span {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.1rem;
+            color: var(--bronce-claro);
+        }
+
+        .counter-badge .count-number {
+            display: inline-block;
+            min-width: 45px;
+            text-align: center;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { filter: drop-shadow(0 0 5px var(--oro-estelar)); }
+            50% { filter: drop-shadow(0 0 15px var(--oro-estelar)); }
+        }
+
+        .counter-badge.bounce .count-number {
+            animation: counter-bounce 0.3s ease-out;
+        }
+
+        @keyframes counter-bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+        }
+
+        /* ========== MUSIC PLAYER ========== */
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .music-toggle {
+            width: 50px;
+            height: 50px;
+            background: rgba(10, 15, 26, 0.9);
+            border: 2px solid var(--bronce-oscuro);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(196, 164, 87, 0.2);
+        }
+
+        .music-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 30px rgba(196, 164, 87, 0.4);
+        }
+
+        .music-toggle.playing {
+            animation: music-pulse 1s ease-in-out infinite;
+        }
+
+        @keyframes music-pulse {
+            0%, 100% { box-shadow: 0 0 10px rgba(196, 164, 87, 0.3); }
+            50% { box-shadow: 0 0 25px rgba(196, 164, 87, 0.6); }
+        }
+
+        .music-toggle svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--bronce-oscuro);
+        }
+
+        .music-info {
+            background: rgba(10, 15, 26, 0.9);
+            border: 1px solid var(--bronce-oscuro);
+            border-radius: 10px;
+            padding: 8px 15px;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            pointer-events: none;
+        }
+
+        .music-player.show-info .music-info {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .music-info span {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.85rem;
+            color: var(--lavanda);
+            white-space: nowrap;
+        }
+
+        /* ========== HOGWARTS CASTLE ========== */
+        .hogwarts-castle {
+            position: absolute;
+            right: 5%;
+            top: 15%;
+            z-index: 5;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            filter: drop-shadow(0 0 20px rgba(196, 164, 87, 0.3));
+        }
+
+        .hogwarts-castle:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 30px rgba(196, 164, 87, 0.5));
+        }
+
+        .castle-glow {
+            position: absolute;
+            top: -30px;
+            left: -30px;
+            right: -30px;
+            bottom: -30px;
+            background: radial-gradient(circle, rgba(196, 164, 87, 0.2) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 50%;
+        }
+
+        .hogwarts-castle:hover .castle-glow {
+            opacity: 1;
+        }
+
+        /* ========== DAISY ========== */
+        .daisy {
+            position: absolute;
+            cursor: pointer;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            z-index: 10;
+            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+        }
+
+        .daisy:hover {
+            animation: daisy-wobble 0.5s ease-in-out;
+            filter: drop-shadow(0 0 20px var(--oro-estelar));
+        }
+
+        .daisy:hover .tooltip {
+            opacity: 1;
+            transform: translateX(-50%) translateY(-5px);
+        }
+
+        .daisy.collected {
+            animation: collect-burst 0.4s ease-out forwards;
+            pointer-events: none;
+        }
+
+        @keyframes daisy-wobble {
+            0%, 100% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+            25% { transform: translate(-50%, -50%) rotate(-5deg) scale(1.1); }
+            75% { transform: translate(-50%, -50%) rotate(5deg) scale(1.1); }
+        }
+
+        @keyframes collect-burst {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            50% { transform: translate(-50%, -50%) scale(1.4); opacity: 0.8; }
+            100% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+        }
+
+        .tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(0);
+            background: rgba(10, 15, 26, 0.95);
+            color: var(--bronce-claro);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: all 0.3s ease;
+            pointer-events: none;
+            border: 1px solid var(--bronce-oscuro);
+            z-index: 20;
+        }
+
+        /* Sparkle particles */
+        .sparkle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--oro-estelar);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: sparkle-burst 0.6s ease-out forwards;
+        }
+
+        @keyframes sparkle-burst {
+            0% { transform: translate(0, 0) scale(1); opacity: 1; }
+            100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+        }
+
+        /* ========== POEM MODAL ========== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: linear-gradient(145deg, var(--blanco-crema) 0%, #f5e6c8 100%);
+            max-width: 500px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            border-radius: 8px;
+            padding: 40px 30px;
+            position: relative;
+            transform: translateY(50px);
+            transition: transform 0.35s ease;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5), inset 0 0 60px rgba(139, 119, 80, 0.1);
+            color: #3d3d3d;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #6b5b45;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--bronce);
+            transform: scale(1.1);
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .modal-header svg {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 15px;
+        }
+
+        .modal-header h2 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.3rem;
+            color: #5d4e37;
+        }
+
+        .modal-poem {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.15rem;
+            line-height: 1.9;
+            text-align: center;
+            font-style: italic;
+            color: #4a4a4a;
+            padding: 20px;
+            border-top: 1px solid rgba(139, 119, 80, 0.3);
+            border-bottom: 1px solid rgba(139, 119, 80, 0.3);
+        }
+
+        /* ========== GALLERY SECTION ========== */
+        .gallery-section {
+            margin-top: 80px;
+            padding: 50px 20px;
+            background: linear-gradient(180deg, transparent 0%, rgba(15, 25, 45, 0.5) 50%, transparent 100%);
+            position: relative;
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .gallery-header .ravenclaw-shield {
+            width: 70px;
+            height: 80px;
+            background: rgba(201, 169, 89, 0.15);
+            border-radius: 8px 8px 35px 35px;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid #c9a959;
+            box-shadow: 0 4px 20px rgba(201, 169, 89, 0.3);
+        }
+
+        .gallery-header .ravenclaw-shield .eagle {
+            font-size: 36px;
+        }
+
+        .gallery-header h2 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: clamp(1.4rem, 4vw, 2.2rem);
+            color: var(--bronce-claro);
+            text-shadow: 0 0 15px rgba(196, 164, 87, 0.3);
+        }
+
+        .gallery-header p {
+            font-style: italic;
+            color: var(--lavanda);
+            margin-top: 8px;
+        }
+
+        .envelope-counter {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(201, 169, 89, 0.2);
+            border: 2px solid var(--bronce);
+            border-radius: 20px;
+            padding: 6px 16px;
+            margin-top: 15px;
+            font-size: 1rem;
+            color: var(--blanco-crema);
+            font-family: var(--font-display);
+        }
+
+        .envelope-counter .count-number {
+            color: var(--oro-estelar);
+            font-weight: bold;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 25px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* ========== ENVELOPE / ENVELOPE-CARD ========== */
+        .envelope-card {
+            perspective: 1000px;
+            cursor: pointer;
+            aspect-ratio: 1;
+        }
+
+        .envelope-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.6s ease;
+        }
+
+        .envelope-card.open .envelope-wrapper {
+            transform: rotateX(-15deg);
+        }
+
+        .envelope-card.open .envelope-front {
+            transform: rotateX(0deg);
+        }
+
+        .envelope-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(145deg, #f5e6c8 0%, #e8d5a3 100%);
+            border-radius: 8px;
+            border: 3px solid var(--bronce-oscuro);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backface-visibility: hidden;
+        }
+
+        .envelope-back .seal {
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle, var(--bronce-oscuro) 0%, #8b7355 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.3), 0 2px 10px rgba(196, 164, 87, 0.4);
+        }
+
+        .envelope-back .seal svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--blanco-crema);
+            opacity: 0.9;
+        }
+
+        .envelope-back .flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, #d4c4a8 0%, #f5e6c8 50%);
+            clip-path: polygon(0 0, 50% 35%, 100% 0, 100% 50%, 0 50%);
+            transform-origin: top center;
+            transition: transform 0.6s ease;
+        }
+
+        .envelope-card.open .flap {
+            transform: rotateX(180deg);
+        }
+
+        .envelope-front {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(145deg, #fff8e7 0%, #f5e6c8 100%);
+            border-radius: 8px;
+            border: 3px solid var(--bronce-oscuro);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotateX(180deg);
+            backface-visibility: hidden;
+            overflow: hidden;
+        }
+
+        .envelope-front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .envelope-image {
+            display: none;
+        }
+
+        .envelope-fallback {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--bronce-oscuro);
+            opacity: 0.3;
+            width: 100%;
+            height: 100%;
+        }
+
+        .envelope-card.open .envelope-image {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .envelope-card.open .envelope-fallback {
+            display: none;
+        }
+
+        .envelope-placeholder {
+            text-align: center;
+            color: #8b7355;
+            font-style: italic;
+            font-size: 0.9rem;
+            padding: 10px;
+        }
+
+        .envelope-placeholder svg {
+            width: 40px;
+            height: 40px;
+            fill: var(--bronce-oscuro);
+            margin-bottom: 8px;
+            opacity: 0.5;
+        }
+
+        /* ========== CELEBRATION MODAL ========== */
+        .celebration-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a1425;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease;
+        }
+
+        .celebration-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .modal-star {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #c4a457;
+            border-radius: 50%;
+            opacity: 0;
+            animation: modal-star-float 4s ease-in-out infinite;
+            box-shadow: 0 0 6px #c4a457;
+        }
+
+        @keyframes modal-star-float {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) translateX(20px); opacity: 0; }
+        }
+
+        .celebration-modal {
+            position: relative;
+            width: 90%;
+            max-width: 500px;
+            background: #0a1425;
+            border: 4px solid #c4a457;
+            border-radius: 16px;
+            box-shadow: 0 0 30px rgba(196, 164, 87, 0.4), 0 0 60px rgba(196, 164, 87, 0.2), inset 0 0 40px rgba(196, 164, 87, 0.05);
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .celebration-overlay.active .celebration-modal {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .celebration-modal::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 20%;
+            right: 20%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #c4a457, transparent);
+            border-radius: 50%;
+            animation: top-glow 3s ease-in-out infinite;
+        }
+
+        @keyframes top-glow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .celebration-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 32px;
+            height: 32px;
+            background: transparent;
+            border: 1.5px solid #c4a457;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: all 0.3s ease;
+            opacity: 0.7;
+        }
+
+        .celebration-close:hover {
+            background: #c4a457;
+            opacity: 1;
+            transform: rotate(90deg);
+        }
+
+        .celebration-close svg {
+            width: 14px;
+            height: 14px;
+            stroke: #c4a457;
+            stroke-width: 2;
+            transition: stroke 0.3s ease;
+        }
+
+        .celebration-close:hover svg {
+            stroke: #0a1425;
+        }
+
+        .celebration-header {
+            text-align: center;
+            padding: 35px 30px 20px;
+        }
+
+        .ravenclaw-shield {
+            width: 70px;
+            height: 80px;
+            background: rgba(201, 169, 89, 0.15);
+            border-radius: 8px 8px 35px 35px;
+            margin: 0 auto 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid #c9a959;
+            box-shadow: 0 4px 20px rgba(201, 169, 89, 0.3);
+            animation: shield-pulse 3s ease-in-out infinite;
+        }
+
+        .ravenclaw-shield .eagle {
+            font-size: 36px;
+        }
+
+        @keyframes shield-pulse {
+            0%, 100% { box-shadow: 0 4px 20px rgba(201, 169, 89, 0.3); }
+            50% { box-shadow: 0 4px 30px rgba(201, 169, 89, 0.6); }
+        }
+
+        .celebration-title {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: clamp(1.6rem, 5vw, 2.4rem);
+            color: #c4a457;
+            text-shadow: 0 0 25px rgba(196, 164, 87, 0.5);
+            letter-spacing: 0.08em;
+            margin-bottom: 6px;
+            opacity: 0;
+            animation: fade-in-up 0.8s ease-out 0.3s forwards;
+        }
+
+        @keyframes fade-in-up {
+            0% { opacity: 0; transform: translateY(-15px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .celebration-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(0.75rem, 2vw, 0.95rem);
+            color: #a8916a;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fade-in-up 0.8s ease-out 0.5s forwards;
+        }
+
+        .celebration-body {
+            padding: 15px 35px 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .magic-message-panel {
+            width: 100%;
+            max-width: 380px;
+            padding: 30px 25px;
+            border: 1.5px solid #c4a457;
+            border-radius: 10px;
+            background: linear-gradient(145deg, rgba(15, 25, 45, 0.9) 0%, rgba(10, 20, 37, 0.95) 100%);
+            text-align: center;
+            position: relative;
+            box-shadow: inset 0 0 20px rgba(196, 164, 87, 0.08), 0 0 15px rgba(196, 164, 87, 0.1);
+        }
+
+        .corner-decor {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-color: #c4a457;
+            border-style: solid;
+            border-width: 0;
+        }
+
+        .corner-decor.top-left { top: 12px; left: 12px; border-top-width: 2px; border-left-width: 2px; }
+        .corner-decor.top-right { top: 12px; right: 12px; border-top-width: 2px; border-right-width: 2px; }
+        .corner-decor.bottom-left { bottom: 12px; left: 12px; border-bottom-width: 2px; border-left-width: 2px; }
+        .corner-decor.bottom-right { bottom: 12px; right: 12px; border-bottom-width: 2px; border-right-width: 2px; }
+
+        .magic-message {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: clamp(1.3rem, 3.5vw, 1.65rem);
+            color: #c4a457;
+            line-height: 1.7;
+            text-shadow: 0 0 12px rgba(196, 164, 87, 0.4);
+            opacity: 0;
+            animation: message-fade-in 1s ease-out 0.8s forwards;
+        }
+
+        .magic-message .line {
+            display: block;
+            margin: 8px 0;
+        }
+
+        .magic-message .line-1 {
+            animation: slide-in-left 0.6s ease-out 0.8s forwards;
+            opacity: 0;
+        }
+
+        .magic-message .line-2 {
+            animation: slide-in-right 0.6s ease-out 1.1s forwards;
+            opacity: 0;
+        }
+
+        @keyframes message-fade-in {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes slide-in-left {
+            0% { opacity: 0; transform: translateX(-25px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slide-in-right {
+            0% { opacity: 0; transform: translateX(25px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+
+        /* ========== GALLERY MESSAGE MODAL ========== */
+        .gallery-message-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 20, 37, 0.95);
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s ease;
+        }
+
+        .gallery-message-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .gallery-message-modal {
+            position: relative;
+            width: 90%;
+            max-width: 500px;
+            background: linear-gradient(145deg, #0a1425 0%, #16213e 100%);
+            border: 4px solid #c9a959;
+            border-radius: 16px;
+            padding: 40px 30px;
+            box-shadow: 
+                0 0 40px rgba(201, 169, 89, 0.4),
+                0 0 80px rgba(201, 169, 89, 0.2),
+                inset 0 0 30px rgba(201, 169, 89, 0.05);
+            transform: scale(0.8);
+            opacity: 0;
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .gallery-message-overlay.active .gallery-message-modal {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .gallery-message-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 36px;
+            height: 36px;
+            background: transparent;
+            border: 2px solid #c9a959;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #c9a959;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-message-close:hover {
+            background: #c9a959;
+            color: #0a1425;
+            transform: rotate(90deg);
+        }
+
+        .gallery-message-close svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .gallery-message-stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .gallery-message-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .gallery-message-content {
+            text-align: center;
+        }
+
+        .gallery-message-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            color: #e8d5b7;
+            line-height: 1.8;
+            font-style: italic;
+            text-shadow: 0 0 10px rgba(201, 169, 89, 0.3);
+            animation: message-glow 3s ease-in-out infinite;
+        }
+
+        @keyframes message-glow {
+            0%, 100% { text-shadow: 0 0 10px rgba(201, 169, 89, 0.3); }
+            50% { text-shadow: 0 0 20px rgba(201, 169, 89, 0.5); }
+        }
+
+        /* Responsive gallery message */
+        @media (max-width: 768px) {
+            .gallery-message-modal {
+                padding: 30px 20px;
+                margin: 20px;
+            }
+
+            .gallery-message-text {
+                font-size: 1rem;
+            }
+        }
+
+        /* ========== INSTRUCTIONS ========== */
+        .instructions {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(10, 15, 26, 0.9);
+            border: 1px solid var(--bronce-oscuro);
+            border-radius: 30px;
+            padding: 10px 25px;
+            font-size: 0.9rem;
+            color: var(--lavanda);
+            z-index: 50;
+            backdrop-filter: blur(10px);
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .instructions.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .garden-container {
+                padding: 80px 10px 40px;
+            }
+
+            .counter-badge {
+                top: 10px;
+                right: 10px;
+                padding: 8px 15px;
+            }
+
+            .music-player {
+                bottom: 15px;
+                left: 15px;
+            }
+
+            .music-toggle {
+                width: 45px;
+                height: 45px;
+            }
+
+            .hogwarts-castle {
+                right: 2%;
+                top: 10%;
+                transform: scale(0.7);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .celebration-modal {
+                width: 92%;
+                max-width: 420px;
+            }
+
+            .celebration-header {
+                padding: 25px 20px 15px;
+            }
+
+            .ravenclaw-shield {
+                width: 60px;
+                height: 68px;
+            }
+
+            .ravenclaw-shield .eagle {
+                font-size: 28px;
+            }
+
+            .celebration-title {
+                font-size: 1.3rem;
+            }
+
+            .celebration-body {
+                padding: 12px 20px 25px;
+            }
+
+            .magic-message-panel {
+                padding: 22px 18px;
+            }
+
+            .magic-message {
+                font-size: 1.1rem;
+            }
+
+            .celebration-close {
+                top: 8px;
+                right: 8px;
+                width: 28px;
+                height: 28px;
+            }
+        }
+
+        /* ========== REDUCED MOTION ========== */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* ========== PRELOADER ========== */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--azul-noche);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .preloader-content {
+            text-align: center;
+            color: var(--blanco-crema);
+        }
+
+        .preloader-daisy {
+            font-size: 4rem;
+            animation: spin 2s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        .preloader-content p {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--bronce-claro);
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-content">
+            <div class="preloader-daisy">🌼</div>
+            <p>Preparando la magia...</p>
+        </div>
+    </div>
+
+    <!-- Stars Background -->
+    <div class="stars-container" id="stars"></div>
+
+    <!-- Floating Candles -->
+    <div class="candle-container" id="candles"></div>
+
+    <!-- Floating Eagles -->
+    <div class="eagle-container" id="eagles"></div>
+
+    <!-- Mist Effect -->
+    <div class="mist"></div>
+
+    <!-- Counter Badge -->
+    <div class="counter-badge" id="counterBadge">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="50" cy="70" rx="12" ry="25" fill="#c4a457"/>
+            <ellipse cx="50" cy="70" rx="8" ry="20" fill="#e8d5a3"/>
+            <g transform="translate(50, 45)">
+                <ellipse cx="0" cy="-25" rx="8" ry="14" fill="#fff8e7"/>
+                <ellipse cx="18" cy="-16" rx="8" ry="14" fill="#fff8e7" transform="rotate(51)"/>
+                <ellipse cx="25" cy="0" rx="8" ry="14" fill="#fff8e7" transform="rotate(90)"/>
+                <ellipse cx="18" cy="16" rx="8" ry="14" fill="#fff8e7" transform="rotate(129)"/>
+                <ellipse cx="-18" cy="16" rx="8" ry="14" fill="#fff8e7" transform="rotate(-129)"/>
+                <ellipse cx="-25" cy="0" rx="8" ry="14" fill="#fff8e7" transform="rotate(-90)"/>
+                <ellipse cx="-18" cy="-16" rx="8" ry="14" fill="#fff8e7" transform="rotate(-51)"/>
+            </g>
+            <circle cx="50" cy="45" r="10" fill="#ffd700"/>
+            <circle cx="47" cy="42" r="3" fill="#fff8e7" opacity="0.6"/>
+        </svg>
+        <span><span class="count-number" id="countNumber">0</span>/<span id="daisyCount">28</span></span>
+    </div>
+
+    <!-- Music Player -->
+    <div class="music-player" id="musicPlayer">
+        <button class="music-toggle" id="musicToggle" aria-label="Reproducir música">
+            <svg viewBox="0 0 24 24" id="musicIcon">
+                <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+            </svg>
+        </button>
+        <div class="music-info">
+            <span id="musicTrack">Aurora - Pulsa para reproducir</span>
+        </div>
+    </div>
+
+    <!-- Main Garden -->
+    <div class="garden-container" id="garden">
+        <!-- Header with Ravenclaw Shield -->
+        <header class="header">
+            <div class="header-shield">
+                <span class="eagle">🦅</span>
+            </div>
+            <h1 class="font-cinzel">El Jardín de Mi Amor</h1>
+            <p class="font-cormorant">28 flores esperando ser descubiertas...</p>
+        </header>
+
+        <!-- Hogwarts Castle -->
+        <div class="hogwarts-castle" id="hogwartsCastle" onclick="scrollToGallery()">
+            <div class="castle-glow"></div>
+            <svg width="160" height="180" viewBox="0 0 160 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Main building -->
+                <rect x="30" y="80" width="100" height="95" fill="#0f3460" stroke="#c4a457" stroke-width="2"/>
+                
+                <!-- Main roof -->
+                <polygon points="80,30 20,85 140,85" fill="#16213e" stroke="#c4a457" stroke-width="2"/>
+                
+                <!-- Left tower -->
+                <rect x="10" y="50" width="30" height="125" fill="#0f3460" stroke="#c4a457" stroke-width="2"/>
+                <polygon points="25,10 5,55 45,55" fill="#16213e" stroke="#c4a457" stroke-width="2"/>
+                <!-- Left tower window -->
+                <ellipse cx="25" cy="35" rx="8" ry="12" fill="#ffd700" opacity="0.6">
+                    <animate attributeName="opacity" values="0.6;0.9;0.6" dur="3s" repeatCount="indefinite"/>
+                </ellipse>
+                
+                <!-- Right tower -->
+                <rect x="120" y="50" width="30" height="125" fill="#0f3460" stroke="#c4a457" stroke-width="2"/>
+                <polygon points="135,10 115,55 155,55" fill="#16213e" stroke="#c4a457" stroke-width="2"/>
+                <!-- Right tower window -->
+                <ellipse cx="135" cy="35" rx="8" ry="12" fill="#ffd700" opacity="0.6">
+                    <animate attributeName="opacity" values="0.6;0.9;0.6" dur="3s" repeatCount="indefinite" begin="1s"/>
+                </ellipse>
+                
+                <!-- Center tower -->
+                <rect x="60" y="40" width="40" height="135" fill="#0f3460" stroke="#c4a457" stroke-width="2"/>
+                <polygon points="80,0 55,45 105,45" fill="#16213e" stroke="#c4a457" stroke-width="2"/>
+                <!-- Center tower window -->
+                <ellipse cx="80" cy="25" rx="10" ry="15" fill="#ffd700" opacity="0.7">
+                    <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+                </ellipse>
+                
+                <!-- Main door -->
+                <path d="M65 175 L65 140 Q80 130 95 140 L95 175" fill="#1a1a2e" stroke="#c4a457" stroke-width="2"/>
+                
+                <!-- Windows -->
+                <rect x="40" y="100" width="15" height="20" fill="#ffd700" opacity="0.5" rx="10" ry="10">
+                    <animate attributeName="opacity" values="0.5;0.8;0.5" dur="4s" repeatCount="indefinite"/>
+                </rect>
+                <rect x="105" y="100" width="15" height="20" fill="#ffd700" opacity="0.5" rx="10" ry="10">
+                    <animate attributeName="opacity" values="0.5;0.8;0.5" dur="4s" repeatCount="indefinite" begin="2s"/>
+                </rect>
+                <rect x="70" y="95" width="20" height="25" fill="#ffd700" opacity="0.4" rx="12" ry="12">
+                    <animate attributeName="opacity" values="0.4;0.7;0.4" dur="3s" repeatCount="indefinite" begin="1s"/>
+                </rect>
+                
+                <!-- Ravenclaw Eagle on top -->
+                <g transform="translate(80, -5)">
+                    <circle cx="0" cy="0" r="14" fill="rgba(201, 169, 89, 0.2)" stroke="#c9a959" stroke-width="1"/>
+                    <text x="0" y="5" text-anchor="middle" font-size="16">🦅</text>
+                </g>
+                
+                <!-- Ravenclaw Banner -->
+                <rect x="60" y="55" width="40" height="25" fill="#c4a457" rx="2"/>
+                <path d="M60 55 L60 80 L80 70 L100 80 L100 55" fill="#c4a457"/>
+                <text x="80" y="72" text-anchor="middle" fill="#0a1425" font-family="serif" font-size="12" font-weight="bold">R</text>
+                
+                <!-- Decorative stars -->
+                <polygon points="15,25 16,27 18,27 16.5,28 17,30 15,29 13,30 13.5,28 12,27 14,27" fill="#ffd700"/>
+                <polygon points="145,25 146,27 148,27 146.5,28 147,30 145,29 143,30 143.5,28 142,27 144,27" fill="#ffd700"/>
+            </svg>
+        </div>
+
+        <!-- Daisies Container -->
+        <div id="daisiesContainer"></div>
+    </div>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section" id="gallerySection">
+        <div class="gallery-header">
+            <div class="ravenclaw-shield">
+                <span class="eagle">🦅</span>
+            </div>
+            <h2 class="font-cinzel">Momentos mágicos a tu lado</h2>
+            <p class="font-cormorant">kris kris kris</p>
+            <div class="envelope-counter" id="envelopeCounter">
+                <span>✉️</span>
+                <span><span class="count-number" id="envelopeCountNumber">0</span>/8</span>
+            </div>
+        </div>
+        
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- 8 Envelope Cards con fotos de Krismar -->
+            <div class="envelope-card" data-envelope="1" onclick="toggleEnvelope(this)">
+                <div class="envelope-wrapper">
+                    <div class="envelope-back">
+                        <div class="seal">
+                            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+                        </div>
+                        <div class="flap"></div>
+                    </div>
+                    <div class="envelope-front">
+                        <img src="krismar 1.jpeg" alt="Krismar 1" class="envelope-image">
+                        <span class="envelope-fallback">🦅</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="envelope-card" data-envelope="2" onclick="toggleEnvelope(this)">
+                <div class="envelope-wrapper">
+                    <div class="envelope-back">
+                        <div class="seal">
+                            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+                        </div>
+                        <div class="flap"></div>
+                    </div>
+                    <div class="envelope-front">
+                        <img src="krismar 2.jpeg" alt="Krismar 2" class="envelope-image">
+                        <span class="envelope-fallback">🦅</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="envelope-card" data-envelope="3" onclick="toggleEnvelope(this)">
+                <div class="envelope-wrapper">
+                    <div class="envelope-back">
+                        <div class="seal">
+                            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+                        </div>
+                        <div class="flap"></div>
+                    </div>
+                    <div class="envelope-front">
+                        <img src="krismar 3.jpeg" alt="Krismar 3" class="envelope-image">
+                        <span class="envelope-fallback">🦅</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="envelope-card" data-envelope="4" onclick="toggleEnvelope(this)">
+                <div class="envelope-wrapper">
+                    <div class="envelope-back">
+                        <div class="seal">
+                            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+                        </div>
+                        <div class="flap"></div>
+                    </div>
+                    <div class="envelope-front">
+                        <img src="krismar 4.jpeg" alt="Krismar 4" class="envelope-image">
+                        <span class="envelope-fallback">🦅</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="envelope-card" data-envelope="5" onclick="toggleEnvelope(this)">
+                <div class="envelope-wrapper">
+                    <div class="envelope-back">
+                        <div class="seal">
+                            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+                        </div>
+                        <div class="flap"></div>
+                    </div>
+                    <div class="envelope-front">
+                        <img src="krismar 5.jpeg" alt="Krismar 5" class="envelope-image">
+                        <span class="envelope-fallback">🦅</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="envelope-card" data-envelope="6" onclick="toggleEnvelope(this)">
+                <div class="envelope-wrapper">
+                    <div class="envelope-back">
+                        <div class="seal">
+                            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+                        </div>
+                        <div class="flap"></div>
+                    </div>
+                    <div class="envelope-front">
+                        <img src="krismar 6.jpeg" alt="Krismar 6" class="envelope-image">
+                        <span class="envelope-fallback">🦅</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="envelope-card" data-envelope="7" onclick="toggleEnvelope(this)">
+                <div class="envelope-wrapper">
+                    <div class="envelope-back">
+                        <div class="seal">
+                            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+                        </div>
+                        <div class="flap"></div>
+                    </div>
+                    <div class="envelope-front">
+                        <img src="krismar 7.jpeg" alt="Krismar 7" class="envelope-image">
+                        <span class="envelope-fallback">🦅</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="envelope-card" data-envelope="8" onclick="toggleEnvelope(this)">
+                <div class="envelope-wrapper">
+                    <div class="envelope-back">
+                        <div class="seal">
+                            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+                        </div>
+                        <div class="flap"></div>
+                    </div>
+                    <div class="envelope-front">
+                        <img src="krismar 8.jpeg" alt="Krismar 8" class="envelope-image">
+                        <span class="envelope-fallback">🦅</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Poem Modal -->
+    <div class="modal-overlay" id="modalOverlay" onclick="handleModalClick(event)">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()" aria-label="Cerrar">&times;</button>
+            <div class="modal-header">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="translate(50, 45)">
+                        <ellipse cx="0" cy="-25" rx="10" ry="16" fill="#f8b4c4"/>
+                        <ellipse cx="22" cy="-14" rx="10" ry="16" fill="#f8b4c4" transform="rotate(51)"/>
+                        <ellipse cx="25" cy="5" rx="10" ry="16" fill="#f8b4c4" transform="rotate(90)"/>
+                        <ellipse cx="14" cy="20" rx="10" ry="16" fill="#f8b4c4" transform="rotate(129)"/>
+                        <ellipse cx="-14" cy="20" rx="10" ry="16" fill="#f8b4c4" transform="rotate(-129)"/>
+                        <ellipse cx="-25" cy="5" rx="10" ry="16" fill="#f8b4c4" transform="rotate(-90)"/>
+                        <ellipse cx="-22" cy="-14" rx="10" ry="16" fill="#f8b4c4" transform="rotate(-51)"/>
+                    </g>
+                    <circle cx="50" cy="45" r="12" fill="#c4a457"/>
+                    <circle cx="47" cy="42" r="4" fill="#e8d5a3" opacity="0.7"/>
+                </svg>
+                <h2 class="font-cinzel" id="modalTitle">Poema I de XXVIII</h2>
+            </div>
+            <div class="modal-poem" id="modalPoem">
+                <p class="poem-placeholder">[Aquí aparecerá el poema que escribas en el array de JavaScript]</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Celebration Modal -->
+    <div class="celebration-overlay" id="celebrationOverlay">
+        <div class="modal-stars" id="modalStars"></div>
+        
+        <div class="celebration-modal">
+            <button class="celebration-close" onclick="closeCelebration()" aria-label="Cerrar">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 6L6 18M6 6L18 18" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            
+            <div class="celebration-header">
+                <div class="ravenclaw-shield">
+                    <span class="eagle">🦅</span>
+                </div>
+                
+                <h1 class="celebration-title">FELIZ CUMPLEAÑOS KRISMAR</h1>
+                <p class="celebration-subtitle">gracias por existir</p>
+            </div>
+            
+            <div class="celebration-body">
+                <div class="magic-message-panel">
+                    <div class="corner-decor top-left"></div>
+                    <div class="corner-decor top-right"></div>
+                    <div class="corner-decor bottom-left"></div>
+                    <div class="corner-decor bottom-right"></div>
+                    
+                    <div class="magic-message">
+                        <span class="line line-1">Te amo con mis</span>
+                        <span class="line line-2">7 vidas</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery Message Modal -->
+    <div class="gallery-message-overlay" id="galleryMessageOverlay" onclick="handleGalleryMessageClick(event)">
+        <div class="gallery-message-modal">
+            <button class="gallery-message-close" onclick="closeGalleryMessage()" aria-label="Cerrar">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+            
+            <div class="gallery-message-stars" id="galleryMessageStars"></div>
+            
+            <div class="gallery-message-header">
+                <div class="ravenclaw-shield">
+                    <span class="eagle">🦅</span>
+                </div>
+            </div>
+            
+            <div class="gallery-message-content">
+                <p class="gallery-message-text">
+                    gracias por existir, cada momento a tú lado es lo más hermoso del universo, te amo mucho mi florecita, por más momentos a tú lado
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Instructions -->
+    <div class="instructions font-garamond" id="instructions">
+        ✨ Toca las margaritas para descubrir los poemas ✨
+    </div>
+
+    <script>
+        // ========== CONFIGURACIÓN ==========
+        const DAISY_COUNT = 28;
+
+        // ============================================
+        // 📝 28 POEMAS - PERSONALIZA AQUÍ TUS POEMAS
+        // ============================================
+        // Formato: { titulo: "Título", contenido: "Versos..." },
+        // Cada poema corresponde a una margarita (0-27)
+        const POEMS = [
+            { titulo: "Amanecer de Abril", contenido: "Tus ojos, Krismar, son el primer brote,\nla luz que despierta a las dalias dormidas." },
+            { titulo: "Jardín del Alma", contenido: "En tu risa hay un campo de lavanda,\ndonde mi corazón encuentra paz." },
+            { titulo: "Dicha Existencial", contenido: "Qué suerte la mía de coincidir con tu existencia,\nun girasol que siempre busca la luz." },
+            { titulo: "Poesía de Pétalos", contenido: "Escribo versos en cada pétalo,\npara que el viento te cuenta cuánto te admiro." },
+            { titulo: "Ravenclaw y Rosas", contenido: "Sabiduría y belleza en una sola flor,\nla más preciada de todo el castillo." },
+            { titulo: "Amor sin Espinas", contenido: "Eres la rosa que no hiere,\nsolo perfuma mi vida con tu amor." },
+            { titulo: "Danza de Margaritas", contenido: "28 margaritas bailan al verte,\ncelebrando el regalo de tus 22 años." },
+            { titulo: "Admiración Eterna", contenido: "Como el colibrí a la orquídea,\nasí mi alma queda suspendida ante ti." },
+            { titulo: "Luz de Luna", contenido: "Incluso las flores nocturnas se abren,\ncuando tu recuerdo ilumina mi noche." },
+            { titulo: "Verso Silvestre", contenido: "Un amor simple y puro como una flor de campo,\nque crece libre y fuerte en mi pecho." },
+            { titulo: "Esencia de Felicidad", contenido: "Tu perfume es la dicha pura,\nun elixir que cura cualquier tristeza." },
+            { titulo: "Mágica Existencia", contenido: "No hay poción ni hechizo comparable,\nal simple milagro de tu respirar." },
+            { titulo: "Aurora y Azucenas", contenido: "Tu voz es el canto de la mañana,\nque despierta a las azucenas con dulzura." },
+            { titulo: "Pétalos de Tiempo", contenido: "Cada día contigo es una flor que guardo,\nun tesoro en el herbario de mi memoria." },
+            { titulo: "Dicha en Verso", contenido: "No necesito rimas para decirte esto:\ntu sola presencia es mi mayor poema." },
+            { titulo: "Refugio de Lirios", contenido: "Tus abrazos son mi refugio,\nun campo de lirios donde el mundo desaparece." },
+            { titulo: "Admiración Infinita", contenido: "Contemplo tu belleza como quien mira un prado,\ny no encuentro fin a mi asombro." },
+            { titulo: "Flor de Sabiduría", contenido: "Cultivas versos e ideas en tu mente,\nun jardín intelectual que me fascina." },
+            { titulo: "Dicha Compartida", contenido: "La felicidad no está en el destino,\nsino en regar juntos este jardín." },
+            { titulo: "Amor Botánico", contenido: "Echaste raíces profundas en mí,\ny ahora soy un árbol lleno de tus flores." },
+            { titulo: "Dulzura de Violetas", contenido: "Tus palabras tienen el tacto de las violetas,\nsuaves, discretas y llenas de amor." },
+            { titulo: "Existencia Brillante", contenido: "Como el rocío sobre la primera flor,\nasí brillas tú en mi vida de 7 vidas." },
+            { titulo: "Poesía sin Nombre", contenido: "No hay nombre para esta flor,\nsolo la sensación de paz cuando estás." },
+            { titulo: "Admiración Sincera", contenido: "Te admiro no por lo que haces,\nsino por la luz que irradias al ser." },
+            { titulo: "Dicha de verte", contenido: "Un solo instante contigo,\ny el desierto de mi alma florece." },
+            { titulo: "Verso de Abril", contenido: "22 inviernos, 22 primaveras,\ny tu belleza sigue siendo el primer brote." },
+            { titulo: "Amor Floreciente", contenido: "Nuestro amor es una planta que cuidamos,\nque nos regala flores cada día." },
+            { titulo: "Dicha de Krismar", contenido: "Krismar, nombre de flor y de mar,\nla dicha más grande que puedo imaginar." }
+        ];
+
+        const ROMAN_NUMERALS = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII', 'XIII', 'XIV', 'XV', 'XVI', 'XVII', 'XVIII', 'XIX', 'XX', 'XXI', 'XXII', 'XXIII', 'XXIV', 'XXV', 'XXVI', 'XXVII', 'XXVIII'];
+
+        // ============================================
+        // 🎵 MÚSICA AURORA - PEGA TUS ARCHIVOS MP3
+        // ============================================
+        // Nombra tus archivos: aurora 1.mp3, aurora 2.mp3, etc.
+        // o cambia los nombres aquí abajo:
+        const AURORA_TRACKS = ['aurora 1.mp3', 'aurora 2.mp3', 'aurora 3.mp3', 'aurora 4.mp3', 'aurora 5.mp3', 'aurora 6.mp3', 'aurora 7.mp3'];
+
+        // ========== ESTADO ==========
+        const state = {
+            collected: new Set(),
+            isModalOpen: false,
+            currentPoemIndex: null,
+            celebrationTriggered: false,
+            daisyPositions: generateRandomPositions(DAISY_COUNT),
+            audio: null,
+            currentTrack: 0,
+            isPlaying: false,
+            openedEnvelopes: new Set(),
+            openedEnvelopesOnce: new Set(),
+            galleryMessageShown: false
+        };
+
+        // ========== GENERACIÓN DE POSICIONES ==========
+        function generateRandomPositions(count) {
+            const positions = [];
+            const minDistance = 8;
+            
+            for (let i = 0; i < count; i++) {
+                let attempts = 0;
+                let validPosition = false;
+                let x, y;
+                
+                while (!validPosition && attempts < 100) {
+                    x = 10 + Math.random() * 80;
+                    y = 15 + Math.random() * 65;
+                    validPosition = true;
+                    
+                    for (const pos of positions) {
+                        const distance = Math.sqrt(Math.pow(x - pos.x, 2) + Math.pow(y - pos.y, 2));
+                        if (distance < minDistance) {
+                            validPosition = false;
+                            break;
+                        }
+                    }
+                    attempts++;
+                }
+                
+                const rot = (Math.random() - 0.5) * 30;
+                const scale = 0.85 + Math.random() * 0.3;
+                positions.push({ x, y, rot, scale });
+            }
+            
+            return positions;
+        }
+
+        // ========== INICIALIZACIÓN ==========
+        function init() {
+            createStars();
+            createCandles();
+            createEagles();
+            createDaisies();
+            initMusicPlayer();
+            setupEventListeners();
+            document.getElementById('daisyCount').textContent = DAISY_COUNT;
+        }
+
+        // ========== ESTRELLAS MEJORADAS ==========
+        function createStars() {
+            const container = document.getElementById('stars');
+            const starCount = window.innerWidth < 768 ? 80 : 150;
+            const colors = ['#ffd700', '#e8d5a3', '#c4a457', '#e6e6fa', '#fff8e7', '#b8c5d6'];
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                const type = Math.random();
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const size = 6 + Math.random() * 10;
+                
+                if (type < 0.35) {
+                    star.classList.add('star-4point');
+                    star.style.background = color;
+                } else if (type < 0.65) {
+                    star.classList.add('star-6point');
+                    star.style.background = color;
+                } else {
+                    star.classList.add('sparkle');
+                    star.style.background = color;
+                    star.style.width = (3 + Math.random() * 4) + 'px';
+                    star.style.height = star.style.width;
+                }
+                
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                star.style.setProperty('--duration', (2 + Math.random() * 4) + 's');
+                star.style.setProperty('--delay', (Math.random() * 3) + 's');
+                
+                container.appendChild(star);
+            }
+        }
+
+        // ========== VELAS FLOTANTES ==========
+        function createCandles() {
+            const container = document.getElementById('candles');
+            const candleCount = window.innerWidth < 768 ? 8 : 15;
+            
+            for (let i = 0; i < candleCount; i++) {
+                const candle = document.createElement('div');
+                candle.className = 'candle';
+                candle.style.left = (10 + Math.random() * 80) + '%';
+                candle.style.setProperty('--rise-duration', (8 + Math.random() * 10) + 's');
+                candle.style.setProperty('--delay', (Math.random() * 10) + 's');
+                candle.style.setProperty('--drift', (Math.random() - 0.5) * 100 + 'px');
+                container.appendChild(candle);
+            }
+        }
+
+        // ========== ÁGUILAS FLOTANTES ==========
+        function createEagles() {
+            const container = document.getElementById('eagles');
+            const eagleCount = 3;
+            
+            for (let i = 0; i < eagleCount; i++) {
+                const eagle = document.createElement('div');
+                eagle.className = 'floating-eagle';
+                eagle.innerHTML = `
+                    <svg width="60" height="40" viewBox="0 0 60 40" fill="none">
+                        <path d="M30 20 L5 5 Q0 10 5 15 L20 20 L5 35 Q0 30 5 25 L30 20" fill="#c4a457" opacity="0.8"/>
+                        <path d="M30 20 L55 5 Q60 10 55 15 L40 20 L55 35 Q60 30 55 25 L30 20" fill="#c4a457" opacity="0.8"/>
+                        <ellipse cx="30" cy="20" rx="8" ry="5" fill="#c4a457"/>
+                        <circle cx="30" cy="17" r="4" fill="#c4a457"/>
+                        <path d="M28 16 L30 19 L32 16" stroke="#ffd700" stroke-width="1" fill="none"/>
+                    </svg>
+                `;
+                eagle.style.setProperty('--fly-duration', (25 + Math.random() * 15) + 's');
+                eagle.style.setProperty('--delay', (Math.random() * 20) + 's');
+                eagle.style.setProperty('--scale', (0.5 + Math.random() * 0.5));
+                eagle.style.setProperty('--float-y', (-30 + Math.random() * 60) + 'px');
+                eagle.style.setProperty('--start-rot', (-5 + Math.random() * 10) + 'deg');
+                eagle.style.setProperty('--end-rot', (-5 + Math.random() * 10) + 'deg');
+                eagle.style.top = (10 + Math.random() * 40) + '%';
+                container.appendChild(eagle);
+            }
+        }
+
+        // ========== MARGARITAS ==========
+        function createDaisies() {
+            const container = document.getElementById('daisiesContainer');
+            container.innerHTML = '';
+            
+            state.daisyPositions.forEach((pos, index) => {
+                const daisy = document.createElement('div');
+                daisy.className = 'daisy';
+                daisy.id = `daisy-${index}`;
+                daisy.style.left = pos.x + '%';
+                daisy.style.top = pos.y + '%';
+                daisy.style.transform = `translate(-50%, -50%) rotate(${pos.rot}deg) scale(${pos.scale})`;
+                daisy.style.zIndex = 10 + index;
+                daisy.style.opacity = '0';
+                daisy.style.animation = `fade-in-down 0.6s ease-out ${1 + index * 0.05}s forwards`;
+                
+                daisy.innerHTML = `
+                    ${createDaisySVG()}
+                    <span class="tooltip">Toca para descubrir</span>
+                `;
+                
+                daisy.onclick = () => collectDaisy(index);
+                container.appendChild(daisy);
+            });
+        }
+
+        function createDaisySVG() {
+            return `
+                <svg width="50" height="50" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="50" cy="70" rx="8" ry="18" fill="#88d8b0"/>
+                    <ellipse cx="50" cy="70" rx="5" ry="14" fill="#a8e6cf"/>
+                    <g transform="translate(50, 40)">
+                        <ellipse cx="0" cy="-20" rx="7" ry="12" fill="#fff8e7"/>
+                        <ellipse cx="14" cy="-12" rx="7" ry="12" fill="#fff8e7" transform="rotate(51)"/>
+                        <ellipse cx="19" cy="0" rx="7" ry="12" fill="#fff8e7" transform="rotate(90)"/>
+                        <ellipse cx="14" cy="12" rx="7" ry="12" fill="#fff8e7" transform="rotate(129)"/>
+                        <ellipse cx="-14" cy="12" rx="7" ry="12" fill="#fff8e7" transform="rotate(-129)"/>
+                        <ellipse cx="-19" cy="0" rx="7" ry="12" fill="#fff8e7" transform="rotate(-90)"/>
+                        <ellipse cx="-14" cy="-12" rx="7" ry="12" fill="#fff8e7" transform="rotate(-51)"/>
+                    </g>
+                    <circle cx="50" cy="40" r="9" fill="#ffd700"/>
+                    <circle cx="47" cy="37" r="3" fill="#fff8e7" opacity="0.6"/>
+                </svg>
+            `;
+        }
+
+        // ========== MÚSICA ==========
+        function initMusicPlayer() {
+            state.audio = new Audio();
+            state.audio.volume = 0.4;
+            
+            state.audio.addEventListener('ended', () => {
+                state.currentTrack = (state.currentTrack + 1) % AURORA_TRACKS.length;
+                playTrack();
+            });
+            
+            state.audio.addEventListener('error', () => {
+                document.getElementById('musicTrack').textContent = 'Archivo no encontrado';
+            });
+        }
+
+        function playTrack() {
+            state.audio.src = AURORA_TRACKS[state.currentTrack];
+            state.audio.play().catch(() => {
+                document.getElementById('musicTrack').textContent = 'Pulsa para reproducir';
+            });
+            document.getElementById('musicTrack').textContent = `Aurora ${state.currentTrack + 1}`;
+            document.getElementById('musicToggle').classList.add('playing');
+            state.isPlaying = true;
+        }
+
+        function toggleMusic() {
+            const player = document.getElementById('musicPlayer');
+            player.classList.add('show-info');
+            
+            if (state.isPlaying) {
+                state.audio.pause();
+                document.getElementById('musicToggle').classList.remove('playing');
+                document.getElementById('musicTrack').textContent = 'Pausado';
+                state.isPlaying = false;
+            } else {
+                playTrack();
+            }
+            
+            setTimeout(() => {
+                player.classList.remove('show-info');
+            }, 2000);
+        }
+
+        document.getElementById('musicToggle').addEventListener('click', toggleMusic);
+
+        // ========== SOBRE-CARTA ==========
+        function toggleEnvelope(card) {
+            const envelopeId = card.getAttribute('data-envelope');
+            
+            if (card.classList.contains('open')) {
+                card.classList.remove('open');
+                state.openedEnvelopes.delete(envelopeId);
+            } else {
+                card.classList.add('open');
+                state.openedEnvelopes.add(envelopeId);
+                
+                // Contador acumulable (cuenta aunque se cierre)
+                if (!state.openedEnvelopesOnce.has(envelopeId)) {
+                    state.openedEnvelopesOnce.add(envelopeId);
+                    updateEnvelopeCounter();
+                }
+                
+                // Crear sparkles al abrir
+                createSparkles(card);
+                
+                // Verificar si se abrieron todos los sobres
+                if (state.openedEnvelopesOnce.size >= 8 && !state.galleryMessageShown) {
+                    state.galleryMessageShown = true;
+                    setTimeout(() => {
+                        triggerGalleryMessage();
+                    }, 800);
+                }
+            }
+        }
+
+        function triggerGalleryMessage() {
+            const overlay = document.getElementById('galleryMessageOverlay');
+            createGalleryMessageStars();
+            overlay.classList.add('active');
+        }
+
+        function closeGalleryMessage() {
+            const overlay = document.getElementById('galleryMessageOverlay');
+            overlay.classList.remove('active');
+        }
+
+        function createGalleryMessageStars() {
+            const container = document.getElementById('galleryMessageStars');
+            container.innerHTML = '';
+            
+            for (let i = 0; i < 20; i++) {
+                const star = document.createElement('div');
+                star.className = 'modal-star';
+                star.style.left = (5 + Math.random() * 90) + '%';
+                star.style.top = (5 + Math.random() * 90) + '%';
+                star.style.animationDelay = (Math.random() * 3) + 's';
+                container.appendChild(star);
+            }
+        }
+
+        // ========== COLECCIÓN ==========
+        function collectDaisy(id) {
+            if (state.collected.has(id) || state.isModalOpen) return;
+            
+            state.collected.add(id);
+            
+            const daisy = document.getElementById(`daisy-${id}`);
+            createSparkles(daisy);
+            
+            daisy.classList.add('collected');
+            
+            setTimeout(() => {
+                daisy.style.visibility = 'hidden';
+            }, 400);
+            
+            updateCounter();
+            openModal(id);
+            
+            if (state.collected.size >= 28 && !state.celebrationTriggered) {
+                setTimeout(triggerCelebration, 1000);
+            }
+        }
+
+        function createSparkles(element) {
+            const rect = element.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            for (let i = 0; i < 10; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = centerX + 'px';
+                sparkle.style.top = centerY + 'px';
+                sparkle.style.setProperty('--tx', (Math.random() - 0.5) * 100 + 'px');
+                sparkle.style.setProperty('--ty', (Math.random() - 0.5) * 100 + 'px');
+                sparkle.style.background = ['#ffd700', '#e8d5a3', '#f8b4c4'][Math.floor(Math.random() * 3)];
+                document.body.appendChild(sparkle);
+                
+                setTimeout(() => sparkle.remove(), 600);
+            }
+        }
+
+        function updateCounter() {
+            const counter = document.getElementById('counterBadge');
+            const countNumber = document.getElementById('countNumber');
+            
+            countNumber.textContent = state.collected.size;
+            counter.classList.add('bounce');
+            
+            setTimeout(() => counter.classList.remove('bounce'), 300);
+        }
+
+        function updateEnvelopeCounter() {
+            const envelopeCounter = document.getElementById('envelopeCounter');
+            const envelopeCountNumber = document.getElementById('envelopeCountNumber');
+            
+            envelopeCountNumber.textContent = state.openedEnvelopesOnce.size;
+            envelopeCounter.classList.add('bounce');
+            
+            setTimeout(() => envelopeCounter.classList.remove('bounce'), 300);
+        }
+
+        // ========== MODAL ==========
+        function openModal(index) {
+            state.isModalOpen = true;
+            state.currentPoemIndex = index;
+            
+            const overlay = document.getElementById('modalOverlay');
+            const title = document.getElementById('modalTitle');
+            const poem = document.getElementById('modalPoem');
+            
+            const poemData = POEMS[index];
+            title.textContent = poemData.titulo;
+            poem.innerHTML = `<p>${poemData.contenido.replace(/\n/g, '<br>')}</p>`;
+            
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            document.getElementById('instructions').classList.add('hidden');
+        }
+
+        function closeModal() {
+            state.isModalOpen = false;
+            state.currentPoemIndex = null;
+            
+            const overlay = document.getElementById('modalOverlay');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function handleModalClick(event) {
+            if (event.target.id === 'modalOverlay') {
+                closeModal();
+            }
+        }
+
+        // ========== GALERÍA ==========
+        function scrollToGallery() {
+            document.getElementById('gallerySection').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        // ========== CELEBRACIÓN ==========
+        function triggerCelebration() {
+            state.celebrationTriggered = true;
+            
+            const overlay = document.getElementById('celebrationOverlay');
+            createModalStars();
+            
+            overlay.classList.add('active');
+            
+            setTimeout(() => {
+                overlay.style.cursor = 'pointer';
+                overlay.onclick = closeCelebration;
+            }, 4000);
+        }
+
+        function createModalStars() {
+            const container = document.getElementById('modalStars');
+            container.innerHTML = '';
+            
+            for (let i = 0; i < 15; i++) {
+                const star = document.createElement('div');
+                star.className = 'modal-star';
+                star.style.left = (10 + Math.random() * 80) + '%';
+                star.style.top = (10 + Math.random() * 80) + '%';
+                star.style.animationDelay = (Math.random() * 3) + 's';
+                container.appendChild(star);
+            }
+        }
+
+        function closeCelebration() {
+            const overlay = document.getElementById('celebrationOverlay');
+            overlay.classList.remove('active');
+            overlay.style.cursor = 'default';
+            overlay.onclick = null;
+        }
+
+        // ========== EVENT LISTENERS ==========
+        function setupEventListeners() {
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    if (state.isModalOpen) closeModal();
+                    if (state.celebrationTriggered) closeCelebration();
+                    closeGalleryMessage();
+                }
+            });
+            
+            document.addEventListener('click', () => {
+                document.getElementById('instructions').classList.add('hidden');
+            }, { once: true });
+        }
+
+        function handleGalleryMessageClick(event) {
+            if (event.target.id === 'galleryMessageOverlay') {
+                closeGalleryMessage();
+            }
+        }
+
+        // Iniciar
+        document.addEventListener('DOMContentLoaded', init);
+
+        // ========== PRELOADER ==========
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const preloader = document.getElementById('preloader');
+                preloader.classList.add('hidden');
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
